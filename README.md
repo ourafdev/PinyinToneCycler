@@ -41,7 +41,7 @@ By default, the fifth press removes the tone mark, for the neutral tone.
 | Type ü with | `v`, `u:`, either one, or neither. Typing an actual ü always works. |
 | Tone order | Move the tones up or down, or untick one to skip it. The first press never stops on "No tone", since the syllable already has no mark. |
 | Start with Windows | Starts the script when you log in. |
-| Close button (X) | Closes the settings window or minimizes it to the taskbar. The script keeps running in the tray either way. |
+| Close button (X) | Either closes only the settings window, leaving the script running in the tray, or exits the script. |
 
 Settings are saved in `%AppData%\PinyinToneCycler\settings.ini`.
 

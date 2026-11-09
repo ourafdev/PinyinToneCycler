@@ -198,7 +198,7 @@ LoadSettings() {
         PauseKey := ""
     UMode := U_MODES[UModeIndex(IniRead(CONFIG_FILE, "General", "UMode", "both"))].id
     CycleOrder := ParseOrder(IniRead(CONFIG_FILE, "General", "Order", ""))
-    CloseAction := IniRead(CONFIG_FILE, "General", "CloseAction", "close") = "minimize" ? "minimize" : "close"
+    CloseAction := IniRead(CONFIG_FILE, "General", "CloseAction", "close") = "exit" ? "exit" : "close"
     SYLLABLE := BuildSyllable(UMode)
 }
 
@@ -344,8 +344,8 @@ OpenSettings(*) {
     StartupCtl.Value := FileExist(STARTUP_LINK) ? 1 : 0
 
     SettingsGui.Add("Text", "w290 y+12", "Close button (X):")
-    closeChoice := CloseAction = "minimize" ? 2 : 1
-    CloseCtl := SettingsGui.Add("DropDownList", "w290 Choose" closeChoice, ["Close this window", "Minimize to the taskbar"])
+    closeChoice := CloseAction = "exit" ? 2 : 1
+    CloseCtl := SettingsGui.Add("DropDownList", "w290 Choose" closeChoice, ["Close only this window", "Exit Pinyin Tone Cycler"])
 
     SettingsGui.Add("Button", "xm y+16 w100 Default", "Save").OnEvent("Click", SaveSettings)
     SettingsGui.Add("Button", "x+8 yp w100", "Cancel").OnEvent("Click", CloseSettings)
@@ -436,7 +436,7 @@ SaveSettings(*) {
     PauseKey := newPause
     UMode := U_MODES[UModeCtl.Value].id
     CycleOrder := order
-    CloseAction := CloseCtl.Value = 2 ? "minimize" : "close"
+    CloseAction := CloseCtl.Value = 2 ? "exit" : "close"
     SYLLABLE := BuildSyllable(UMode)
 
     try {
@@ -473,12 +473,9 @@ OnWindowActivate(wParam, lParam, msg, hwnd) {
 }
 
 OnCloseButton(*) {
-    if CloseAction != "minimize" {
-        CloseSettings()
-        return
-    }
-    SettingsGui.Minimize()
-    return true   ; impede o fechamento da janela
+    if CloseAction = "exit"
+        ExitApp()
+    CloseSettings()
 }
 
 CloseSettings(*) {
