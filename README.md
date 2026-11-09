@@ -11,12 +11,9 @@ So this script brings a tone assigning method similar to the MacOS to Windows: t
 
 # Installation
 
-You can run it as an executable or as a script:
-
-- **Executable:** download `PinyinToneCycler.exe` and double-click it. You don't need to install AutoHotkey.
-- **Script:** install [AutoHotkey v2](https://www.autohotkey.com/), then download `PinyinToneCycler.ahk` and double-click it.
-
-Either way, an "H" icon appears in the system tray. To start it with Windows, tick **Start with Windows** in the settings.
+1. Install [AutoHotkey v2](https://www.autohotkey.com/). The script needs it to run, and AutoHotkey v1 won't work.
+2. Download `PinyinToneCycler.ahk` and double-click it. An "H" icon appears in the system tray.
+3. Optional: to start it with Windows, tick **Start with Windows** in the settings.
 
 Double-click the tray icon to open the settings. Right-click it to pause or exit.
 
