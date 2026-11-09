@@ -1,5 +1,60 @@
-# pinyin-tone-cycler
+# PinyinToneCycler
 A simple windows AHK script that allows cycling between pinyin tones while typing with one tap.
+
+# Why this exists
+
+The standard Windows Chinese input doesn't have a good solution to mark pinyin tones. MacOS allows the user to tap the Tab key to cycle between the tone marks on the syllable.
+
+While windows has some workarounds, like [PinyinTones](https://github.com/PinyinTones/PinyinTones), the use is still cumbersome, since you have to change the input method just for the pinyin and then change back to what you were using before.
+
+So this script brings a tone assigning method similar to the MacOS to Windows: type the syllable, then tap a hotkey until the tone is right.
+
+# Installation
+
+You can run it as an executable or as a script:
+
+- **Executable:** download `PinyinToneCycler.exe` and double-click it. You don't need to install AutoHotkey.
+- **Script:** install [AutoHotkey v2](https://www.autohotkey.com/), then download `PinyinToneCycler.ahk` and double-click it.
+
+Either way, an "H" icon appears in the system tray. To start it with Windows, tick **Start with Windows** in the settings.
+
+Double-click the tray icon to open the settings. Right-click it to pause or exit.
+
+# Usage
+
+Type a syllable, then press the hotkey, which is **Alt + the key to the left of 1** by default (`'` on ABNT2, `` ` `` on a US keyboard). Each press moves to the next tone:
+
+```
+ni → nī → ní → nǐ → nì → ni
+```
+
+By default, the fifth press removes the tone mark, for the neutral tone.
+
+- For ü, type `v` or `u:`. Both `lv` and `lu:` become lǖ.
+- The mark goes on the correct vowel automatically: `hao` becomes hāo, `liu` becomes liū.
+- Only the last syllable changes. In `nihao`, the tone goes on `hao`, so press the hotkey after each syllable.
+- It only works right after typing. Clicking, using the arrow keys or switching windows cancels it.
+
+# Settings
+
+| Option | What it does |
+| --- | --- |
+| Cycle hotkey | The hotkey that changes the tone. It must include Ctrl or Alt, so it doesn't get in the way of typing. |
+| Pause hotkey | Optional. Turns the script off and on. |
+| Type ü with | `v`, `u:`, either one, or neither. Typing an actual ü always works. |
+| Tone order | Move the tones up or down, or untick one to skip it. The first press never stops on "No tone", since the syllable already has no mark. |
+| Start with Windows | Starts the script when you log in. |
+| Close button (X) | Closes the settings window or minimizes it to the taskbar. The script keeps running in the tray either way. |
+
+Settings are saved in `%AppData%\PinyinToneCycler\settings.ini`.
+
+# Privacy
+
+The script has to watch your keystrokes to know what you just typed. It keeps at most the last 12 letters in memory and never saves or sends them anywhere.
+
+# License
+
+[AGPL-3.0](LICENSE).
 
 # AI Warning 
 
