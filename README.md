@@ -1,4 +1,7 @@
 # PinyinToneCycler
+
+[Leia em português](README.pt-BR.md)
+
 A simple windows AHK script that allows cycling between pinyin tones while typing with one tap.
 
 # Why this exists
