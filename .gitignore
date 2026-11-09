@@ -1,0 +1,9 @@
+# Compiled executables and installers.
+# The project ships as the .ahk script only.
+*.exe
+*.dll
+*.com
+*.scr
+*.msi
+*.msix
+*.msp
